@@ -19,6 +19,8 @@ def main():
         # Add new Sheet
         file_path = os.path.join(csv_directory, 'MeasuresColumns.txt')
         df = pd.read_csv(file_path, delimiter='\t')
+        # Rename the first column to "Table Name"
+        df.rename(columns={df.columns[0]: 'Measure'}, inplace=True)
         # Move the first column to the end
         columns = df.columns.tolist()
         columns.append(columns.pop(0))
